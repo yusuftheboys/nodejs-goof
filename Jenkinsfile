@@ -12,7 +12,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'trufflehog filesystem . --exclude-paths trufflehog-excluded-paths.txt > trufflehog-scan-result.txt'
+                sh 'trufflehog filesystem . > trufflehog-scan-result.txt'
                 sh 'cat trufflehog-scan-result.txt'
                 archiveArtifacts artifacts: 'trufflehog-scan-result.txt'
             }
