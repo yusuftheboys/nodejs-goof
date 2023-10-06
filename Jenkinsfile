@@ -64,7 +64,7 @@ pipeline {
             steps {
                 sh 'npm install retire'
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'retire > retire-scan-report.txt'
+                    sh './node_modules/retire/lib/cli.js > retire-scan-report.txt'
                 }
                 sh 'cat retire-scan-report.txt'
                 archiveArtifacts artifacts: 'retire-scan-report.txt'
