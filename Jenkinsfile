@@ -37,7 +37,21 @@ pipeline {
                 sh 'echo test'
             }
         }
-      stage('Build Docker Image and Push to Docker Registry') {
+        stage('OWASP Dependency Check') {
+            agent {
+              docker {
+                  image 'owasp/dependency-check:latest'
+                  args '-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint='
+              }
+            }
+            steps {
+                sh '/usr/share/dependency-check/bin/dependency-check.sh --scan . --project "nodejs-goof" --format ALL'
+                archiveArtifacts artifacts: 'dependency-check-report.html'
+                archiveArtifacts artifacts: 'dependency-check-report.json'
+                archiveArtifacts artifacts: 'dependency-check-report.xml'
+            }
+        }
+        stage('Build Docker Image and Push to Docker Registry') {
             agent {
                 docker {
                     image 'docker:dind'
