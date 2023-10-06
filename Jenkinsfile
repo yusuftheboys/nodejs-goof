@@ -13,9 +13,11 @@ pipeline {
                 }
             }
             steps {
-                sh 'trufflehog filesystem . --exclude-paths trufflehog-excluded-paths.txt > trufflehog-scan-result.txt'
-                sh 'cat trufflehog-scan-result.txt'
-                archiveArtifacts artifacts: 'trufflehog-scan-result.txt'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'trufflehog filesystem . --exclude-paths trufflehog-excluded-paths.txt --fail > trufflehog-scan-result.txt'
+                    sh 'cat trufflehog-scan-result.txt'
+                    archiveArtifacts artifacts: 'trufflehog-scan-result.txt'
+                }
             }
         }
         stage('Build') {
@@ -46,12 +48,11 @@ pipeline {
               }
             }
             steps {
-                sh 'pwd'
-                sh 'ls -la'
-                sh 'snyk test -d > snyk-scan-report.txt'
-                sh 'cat snyk-scan-report.txt'
-                sh 'ls -la'
-                archiveArtifacts artifacts: 'snyk-scan-report.txt'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'snyk test -d > snyk-scan-report.txt'
+                    sh 'cat snyk-scan-report.txt'
+                    archiveArtifacts artifacts: 'snyk-scan-report.txt'
+                }
             }
         }
         stage('SCA Retire Js') {
@@ -61,13 +62,15 @@ pipeline {
               }
             }
             steps {
-                sh 'pwd'
-                sh 'ls -la'
-                sh 'sudo npm install -g retire'
-                sh 'retire > retire-scan-report.txt'
-                sh 'cat retire-scan-report.txt'
-                sh 'ls -la'
-                archiveArtifacts artifacts: 'retire-scan-report.txt'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'pwd'
+                    sh 'ls -la'
+                    sh 'sudo npm install -g retire'
+                    sh 'retire > retire-scan-report.txt'
+                    sh 'cat retire-scan-report.txt'
+                    sh 'ls -la'
+                    archiveArtifacts artifacts: 'retire-scan-report.txt'
+                }
             }
         }
         stage('SCA OWASP Dependency Check') {
@@ -78,13 +81,12 @@ pipeline {
               }
             }
             steps {
-                sh 'pwd'
-                sh 'ls -la'
-                sh '/usr/share/dependency-check/bin/dependency-check.sh --scan . --project "NodeJS Goof" --format ALL'
-                sh 'ls -la'
-                archiveArtifacts artifacts: 'dependency-check-report.html'
-                archiveArtifacts artifacts: 'dependency-check-report.json'
-                archiveArtifacts artifacts: 'dependency-check-report.xml'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh '/usr/share/dependency-check/bin/dependency-check.sh --scan . --project "NodeJS Goof" --format ALL'
+                    archiveArtifacts artifacts: 'dependency-check-report.html'
+                    archiveArtifacts artifacts: 'dependency-check-report.json'
+                    archiveArtifacts artifacts: 'dependency-check-report.xml'
+                }
             }
         }
         stage('Build Docker Image and Push to Docker Registry') {
