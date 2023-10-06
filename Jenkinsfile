@@ -48,6 +48,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
+                sh 'snyk --help'
                 sh 'snyk test > snyk-scan-report.txt'
                 sh 'cat snyk-scan-report.txt'
                 sh 'ls -la'
