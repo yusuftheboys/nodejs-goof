@@ -1,2 +1,5 @@
 package-lock.json
 node_modules
+dependency-check*
+*scan-report.txt
+*scan-result.txt
