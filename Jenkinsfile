@@ -42,7 +42,7 @@ pipeline {
             agent {
               docker {
                   image 'snyk/snyk:node'
-                  args '-u root --env SNYK_TOKEN=$SNYK_CREDENTIALS_PSW --entrypoint='
+                  args '-u root --network host --env SNYK_TOKEN=$SNYK_CREDENTIALS_PSW --entrypoint='
               }
             }
             steps {
