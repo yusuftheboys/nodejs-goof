@@ -37,6 +37,19 @@ pipeline {
                 sh 'echo test'
             }
         }
+        stage('SCA Retire Js) {
+            agent {
+              docker {
+                  image 'node:lts-buster-slim'
+              }
+            }
+            steps {
+                sh 'npm install -g retire'
+                sh 'retire > retire-scan-report.txt'
+                sh 'cat retire-scan-report.txt' 
+                archiveArtifacts artifacts: 'retire-scan-report.txt'
+            }
+        }
         stage('OWASP Dependency Check') {
             agent {
               docker {
