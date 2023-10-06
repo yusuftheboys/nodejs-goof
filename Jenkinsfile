@@ -37,7 +37,7 @@ pipeline {
                 sh 'echo test'
             }
         }
-        stage('SCA Retire Js) {
+        stage('SCA Retire Js') {
             agent {
               docker {
                   image 'node:lts-buster-slim'
