@@ -1,5 +1,6 @@
 package-lock.json
 node_modules
 dependency-check*
-*scan-report.txt
-*scan-result.txt
+retire-scan-report.txt
+snyk-scan-report.txt
+trufflehog-scan-result.txt
