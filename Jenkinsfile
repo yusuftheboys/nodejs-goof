@@ -48,8 +48,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
-                sh 'snyk --help'
-                sh 'snyk test > snyk-scan-report.txt'
+                sh 'snyk test -d > snyk-scan-report.txt'
                 sh 'cat snyk-scan-report.txt'
                 sh 'ls -la'
                 archiveArtifacts artifacts: 'snyk-scan-report.txt'
@@ -81,7 +80,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
-                sh '/usr/share/dependency-check/bin/dependency-check.sh --scan . --project "nodejs-goof" --format ALL'
+                sh '/usr/share/dependency-check/bin/dependency-check.sh --scan . --project "NodeJS Goof" --format ALL'
                 sh 'ls -la'
                 archiveArtifacts artifacts: 'dependency-check-report.html'
                 archiveArtifacts artifacts: 'dependency-check-report.json'
