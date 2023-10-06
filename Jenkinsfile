@@ -2,6 +2,7 @@ pipeline {
     agent none
     environment {
         DOCKERHUB_CREDENTIALS = credentials('DockerLogin')
+        SNYK_CREDENTIALS = credentials('SnykToken')
     }
     stages {
         stage('Secret Scanning Using Trufflehog') {
@@ -37,6 +38,19 @@ pipeline {
                 sh 'echo test'
             }
         }
+        stage('SCA Snyk Test') {
+            agent {
+              docker {
+                  image 'snyk/snyk:node'
+                  args '-u root --env SNYK_TOKEN=$SNYK_CREDENTIALS_PSW --entrypoint='
+              }
+            }
+            steps {
+                sh 'snyk test > snyk-scan-report.txt'
+                sh 'cat snyk-scan-report.txt'
+                archiveArtifacts artifacts: 'snyk-scan-report.txt'
+            }
+        }
         stage('SCA Retire Js') {
             agent {
               docker {
@@ -44,13 +58,13 @@ pipeline {
               }
             }
             steps {
-                sh 'npm install -g retire'
+                sh 'sudo npm install -g retire'
                 sh 'retire > retire-scan-report.txt'
                 sh 'cat retire-scan-report.txt' 
                 archiveArtifacts artifacts: 'retire-scan-report.txt'
             }
         }
-        stage('OWASP Dependency Check') {
+        stage('SCA OWASP Dependency Check') {
             agent {
               docker {
                   image 'owasp/dependency-check:latest'
