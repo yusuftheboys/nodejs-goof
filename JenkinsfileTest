@@ -35,7 +35,7 @@ pipeline {
             agent {
               docker {
                   image 'aquasec/trivy:latest'
-                  args '-u root --network host'
+                  args '-u root --network host --entrypoint='
               }
             }
             steps {
