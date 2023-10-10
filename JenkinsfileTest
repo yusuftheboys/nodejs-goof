@@ -40,7 +40,7 @@ pipeline {
             }
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'trivy config Dockerfile > trivy-scan-dockerfile-report.txt'
+                    sh 'trivy config Dockerfile --exit-code=1 > trivy-scan-dockerfile-report.txt'
                 }
                 sh 'cat trivy-scan-dockerfile-report.txt'
                 archiveArtifacts artifacts: 'trivy-scan-dockerfile-report.txt'
