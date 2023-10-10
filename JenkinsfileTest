@@ -5,7 +5,7 @@ pipeline {
         SNYK_CREDENTIALS = credentials('SnykToken')
     }
     stages {
-        stage('Build Docker Image') {
+        stage('Build Pull Image') {
             agent {
                 docker {
                     image 'docker:dind'
@@ -13,8 +13,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker build -t xenjutsu/nodejsgoof:0.1 .'
+                sh 'docker pull xenjutsu/nodejsgoof:0.1'
             }
         }
         stage('SCA Snyk Scan Docker Image') {
@@ -28,8 +27,23 @@ pipeline {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh 'snyk container test xenjutsu/nodejsgoof:0.1 --exclude-app-vulns > snyk-scan-docker-image-report.txt'
                 }
-                sh 'cat snyk-scan-report.txt'
+                sh 'cat snyk-scan-docker-image-report.txt'
                 archiveArtifacts artifacts: 'snyk-scan-docker-image-report.txt'
+            }
+        }
+        stage('SCA Trivy Scan Dockerfile Misconfiguration') {
+            agent {
+              docker {
+                  image 'aquasec/trivy:latest'
+                  args '-u root --network host'
+              }
+            }
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'trivy config Dockerfile > trivy-scan-dockerfile-report.txt'
+                }
+                sh 'cat trivy-scan-dockerfile-report.txt'
+                archiveArtifacts artifacts: 'trivy-scan-dockerfile-report.txt'
             }
         }
     }
