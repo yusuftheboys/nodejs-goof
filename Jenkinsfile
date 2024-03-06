@@ -90,7 +90,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'docker build -t xenjutsu/nodejsgoof:0.1 .'
+                sh 'docker build -t nodejsgoof:0.1 .'
             }
         }
 
