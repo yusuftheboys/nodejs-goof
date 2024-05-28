@@ -1,5 +1,3 @@
-[WARN] Unsupported CVSS vector format in NPM Audit results, please file a feature request at https://github.com/jeremylong/DependencyCheck/issues/new/choose to support vector format 'null' 
+[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/nyc/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/package.json
 
-Pesan ini mengindikasikan bahwa alat analisis keamanan tidak mendukung format vektor CVSS (Common Vulnerability Scoring System) yang ditemukan dalam hasil audit npm. CVSS adalah kerangka kerja yang digunakan untuk mengevaluasi dan mengukur tingkat keparahan kerentanan keamanan. Namun, dalam pesan tersebut, format vektor CVSS yang ditemukan adalah 'null', yang tidak dapat diproses oleh alat analisis keamanan.
-
-Pesan tersebut juga memberikan saran untuk mengajukan permintaan fitur ke repositori proyek alat analisis keamanan. Permintaan fitur ini bertujuan untuk meminta dukungan untuk format vektor CVSS 'null' agar dapat diproses oleh alat analisis keamanan.
+Pesan tersebut adalah peringatan yang dikeluarkan oleh alat analisis keamanan, menunjukkan bahwa tidak dapat menemukan file package.json untuk modul yang disebutkan di direktori yang diindikasikan. Di sini, modul yang tidak dapat ditemukan adalah spdx-expression-parse, yang merupakan bagian dari dependensi dari validate-npm-package-license yang berada dalam dependensi dari nyc yang berada dalam dependensi dari proyek nodegoof.
