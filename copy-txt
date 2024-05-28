@@ -1,31 +1,9 @@
-[ERROR] Exception extracting archive 'malicious_backup.zip'.
+[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/dotnet-deps-parser/node_modules/lodash/package.json
 
-[WARN] An error occurred while analyzing '/var/jenkins_home/workspace/nodegoof/exploits/zip-slip/malicious_backup.zip' (Archive Analyzer).
+[WARN] dependency skipped: node module fsevents seems optional and not installed
 
-[INFO] Finished Archive Analyzer (0 seconds)
+    Unable to find node module:
+        Peringatan ini menunjukkan bahwa alat tidak dapat menemukan file package.json untuk modul lodash di beberapa direktori yang tercantum. Ini mungkin terjadi karena modul lodash tidak ada di direktori yang ditentukan atau karena tidak ditemukannya file package.json yang sesuai.
 
-[INFO] Launching: [/usr/bin/bundle-audit, version] from /tmp/dctempf57c972d-7cfe-4908-9749-8cd42a325543
-
-[WARN] Warnings from bundle-audit 
-
-[INFO] Ruby Bundle Audit Analyzer is enabled and is using bundle-audit with version details: bundler-audit 0.9.1
-
-. Note: It is necessary to manually run "bundle-audit update" occasionally to keep its database up to date.
-
-[INFO] Launching: [/usr/bin/bundle-audit, check, --verbose] from /var/jenkins_home/workspace/nodegoof/node_modules/@snyk/gemfile/test
-
-[WARN] Warnings from bundle-audit /usr/lib/ruby/gems/3.1.0/gems/bundler-2.5.10/lib/bundler.rb:323:in `rescue in root': Could not locate Gemfile or .bundle/ directory (Bundler::GemfileNotFound)
-
-
-    Exception extracting archive 'malicious_backup.zip':
-        Terjadi kesalahan saat mengekstrak arsip 'malicious_backup.zip'. Ini mungkin disebabkan oleh struktur arsip yang tidak valid atau konten yang merusak.
-
-    An error occurred while analyzing '/var/jenkins_home/workspace/nodegoof/exploits/zip-slip/malicious_backup.zip' (Archive Analyzer):
-        Kesalahan terjadi saat menganalisis arsip 'malicious_backup.zip'. Ini bisa jadi karena arsip tersebut mengandung payload berbahaya atau karena kesalahan dalam proses analisis.
-
-    Could not locate Gemfile or .bundle/ directory (Bundler::GemfileNotFound):
-        bundle-audit tidak dapat menemukan file Gemfile atau direktori .bundle/. Hal ini diperlukan untuk menjalankan bundle-audit karena alat ini memerlukan informasi dari Gemfile untuk melakukan audit keamanan pada dependensi Ruby.
-
-    Warnings from bundle-audit:
-        Pesan peringatan terkait dengan bundle-audit. Ini mungkin menunjukkan bahwa ada masalah dalam proses audit keamanan yang mempengaruhi keseluruhan proyek.
-
+    Dependency skipped: node module fsevents seems optional and not installed:
+        Peringatan ini mengindikasikan bahwa modul fsevents tampaknya opsional dan tidak terpasang. Ini bisa berarti bahwa modul fsevents tidak diinstal di lingkungan saat ini atau tidak diperlukan untuk proses analisis yang sedang berlangsung.
