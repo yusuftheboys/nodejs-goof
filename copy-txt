@@ -1,3 +1,5 @@
-[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/nyc/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/package.json
+[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/nyc/node_modules/unset-value/node_modules/has-value/node_modules/has-values/package.json
 
-Pesan tersebut adalah peringatan yang dikeluarkan oleh alat analisis keamanan, menunjukkan bahwa tidak dapat menemukan file package.json untuk modul yang disebutkan di direktori yang diindikasikan. Di sini, modul yang tidak dapat ditemukan adalah spdx-expression-parse, yang merupakan bagian dari dependensi dari validate-npm-package-license yang berada dalam dependensi dari nyc yang berada dalam dependensi dari proyek nodegoof.
+[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/nyc/node_modules/validate-npm-package-license/node_modules/spdx-correct/package.json
+
+
