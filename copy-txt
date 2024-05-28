@@ -1,0 +1,17 @@
+[ERROR] Exception extracting archive 'malicious_backup.zip'.
+
+[WARN] An error occurred while analyzing '/var/jenkins_home/workspace/nodegoof/exploits/zip-slip/malicious_backup.zip' (Archive Analyzer).
+
+[INFO] Finished Archive Analyzer (0 seconds)
+
+[INFO] Launching: [/usr/bin/bundle-audit, version] from /tmp/dctempf57c972d-7cfe-4908-9749-8cd42a325543
+
+[WARN] Warnings from bundle-audit 
+
+[INFO] Ruby Bundle Audit Analyzer is enabled and is using bundle-audit with version details: bundler-audit 0.9.1
+
+. Note: It is necessary to manually run "bundle-audit update" occasionally to keep its database up to date.
+
+[INFO] Launching: [/usr/bin/bundle-audit, check, --verbose] from /var/jenkins_home/workspace/nodegoof/node_modules/@snyk/gemfile/test
+
+[WARN] Warnings from bundle-audit /usr/lib/ruby/gems/3.1.0/gems/bundler-2.5.10/lib/bundler.rb:323:in `rescue in root': Could not locate Gemfile or .bundle/ directory (Bundler::GemfileNotFound)
