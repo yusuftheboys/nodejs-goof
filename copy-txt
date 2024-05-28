@@ -1,9 +1,5 @@
-[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/dotnet-deps-parser/node_modules/lodash/package.json
+[WARN] Unsupported CVSS vector format in NPM Audit results, please file a feature request at https://github.com/jeremylong/DependencyCheck/issues/new/choose to support vector format 'null' 
 
-[WARN] dependency skipped: node module fsevents seems optional and not installed
+Pesan ini mengindikasikan bahwa alat analisis keamanan tidak mendukung format vektor CVSS (Common Vulnerability Scoring System) yang ditemukan dalam hasil audit npm. CVSS adalah kerangka kerja yang digunakan untuk mengevaluasi dan mengukur tingkat keparahan kerentanan keamanan. Namun, dalam pesan tersebut, format vektor CVSS yang ditemukan adalah 'null', yang tidak dapat diproses oleh alat analisis keamanan.
 
-    Unable to find node module:
-        Peringatan ini menunjukkan bahwa alat tidak dapat menemukan file package.json untuk modul lodash di beberapa direktori yang tercantum. Ini mungkin terjadi karena modul lodash tidak ada di direktori yang ditentukan atau karena tidak ditemukannya file package.json yang sesuai.
-
-    Dependency skipped: node module fsevents seems optional and not installed:
-        Peringatan ini mengindikasikan bahwa modul fsevents tampaknya opsional dan tidak terpasang. Ini bisa berarti bahwa modul fsevents tidak diinstal di lingkungan saat ini atau tidak diperlukan untuk proses analisis yang sedang berlangsung.
+Pesan tersebut juga memberikan saran untuk mengajukan permintaan fitur ke repositori proyek alat analisis keamanan. Permintaan fitur ini bertujuan untuk meminta dukungan untuk format vektor CVSS 'null' agar dapat diproses oleh alat analisis keamanan.
