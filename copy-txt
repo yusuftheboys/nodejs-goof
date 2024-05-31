@@ -1,5 +1,14 @@
-[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/nyc/node_modules/unset-value/node_modules/has-value/node_modules/has-values/package.json
+ERROR] Archive contains a file (../../usr/src/goof/public/about.html) that would be extracted outside of the target directory.
 
-[WARN] Unable to find node module: /var/jenkins_home/workspace/nodegoof/node_modules/nyc/node_modules/validate-npm-package-license/node_modules/spdx-correct/package.json
+script returned exit code 14
 
+Jelaskan pesan error diatas
+ChatGPT
 
+Pesan error ini menunjukkan bahwa terdapat sebuah file dalam arsip yang akan diekstrak ke luar dari direktori target yang ditentukan. Dalam kasus ini, file yang dimaksud adalah about.html dan tampaknya ia berada dalam direktori yang seharusnya tidak boleh diakses oleh arsip yang sedang diekstrak.
+
+Penyebab umum dari pesan ini adalah:
+
+    Kesalahan Konfigurasi: Konfigurasi pengarsipan mungkin tidak benar, sehingga memungkinkan untuk mencakup file atau direktori di luar dari area yang seharusnya tercakup.
+
+    Keterbatasan Akses: Pengguna yang menjalankan proses pengarsipan mungkin tidak memiliki izin yang cukup untuk mengakses atau mengontrol semua file dan direktori yang akan dimasukkan ke dalam arsip.
